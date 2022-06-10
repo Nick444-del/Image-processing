@@ -1,0 +1,13 @@
+clc;
+clear all;
+x=imread("D:\Image Processing OK\Practicals\lena.png");
+//Displaying RGB image
+figure(1);
+subplot(2,2,1);
+imshow(x);
+title('Original RGB Image')
+//Displaying HSV image
+y = rgb2hsv(x);
+subplot(2,2,2);
+imshow(y);
+title('HSV version of RGB original Image')
