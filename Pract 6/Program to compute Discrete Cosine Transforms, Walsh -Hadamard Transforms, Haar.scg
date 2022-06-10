@@ -1,0 +1,38 @@
+clc;
+clear all;
+a=imread('D:\Image Processing OK\Practicals\lena.jpeg');
+a=double(a);
+[row col k]=size(a);
+while(1)
+ rc=input('enter mask size:');
+ remain=modulo(rc,2);
+ if(remain==0)
+ disp("enter the odd values")
+continue;
+ else
+break;
+end
+end
+z=(rc+1)/2;
+rcm=cell(rc,rc);
+msk=ones(rcm)/9;
+a1=a;
+for d=1:1:k
+ for x=z:1:row-z+1
+ for y=z:1:col-z+1
+ for i=1:1:rc
+ for j=1:1:rc
+ a1(x,y,d)=a1(x,y,d)+msk(i,j)*a(x-z+i,y-z+1,d); 
+ end
+ end
+ end
+ end
+ end
+subplot(2,2,1)
+imshow(uint8(a))
+subplot(2,2,2)
+imshow(uint8(a1))
+x=a-a1;
+subplot(2,2,3)
+imshow(uint8(x))
+disp("done")
